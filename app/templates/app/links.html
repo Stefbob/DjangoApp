@@ -1,0 +1,13 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+{% load staticfiles %}
+<div class="row">
+    <div class="col-md-4">
+       <h2>Полезные ресурсы</h2>
+       <p><a href="https://djbook.ru/rel3.0/" target="_blank"> Документация Django 3.0    <img src="{% static 'app/content/django.png' %}" alt="Logo 1" /></a></p>
+       <p><a href="https://docs.python.org/3/" target="_blank"> Документация Python 3.10.0    <img src="{% static 'app/content/python.png' %}" alt="Logo 1" /></a></p>
+       <p><a href="https://docs.microsoft.com/ru-ru/visualstudio/" target="_blank"> Документация Visual Studio    <img src="{% static 'app/content/VS.png' %}" alt="Logo 1" /></a></p>
+    </div>
+</div>
+{% endblock %}

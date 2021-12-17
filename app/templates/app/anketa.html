@@ -1,0 +1,60 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+{% if form != None %}
+
+<br><h2>Отправьте пожалуйста заполненную анкету</h2><br>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <label> {{form.username.label }}: </label>
+            {{ form.username }} <br><br>
+            <label> {{form.gender.label }}: </label>
+            {{ form.gender }}
+            <label> {{form.bisuness.label }}: </label>
+            {{ form.bisuness }}
+            <label> {{form.email.label }}: </label>
+            {{ form.email }} <br><br>
+            <label> {{form.promotion.label }}: </label>
+            {{ form.promotion }} <br><br>
+            <label> {{form.notice.label }}: </label>
+            {{ form.notice }} <br><br>
+            <label> {{form.message.label }}: </label>
+            {{ form.message }} <br><br>
+            <input type ="submit" value="Отправить">
+        </form>
+    </div>
+<script>
+    function transmutate_focus()
+    {
+        $(this).css('background-color', 'yellow');
+        $(this).css('color', 'white');
+    }
+
+    function transmutate_unfocus()
+    {
+        $(this).css('background-color', 'white');
+        $(this).css('color', 'black');
+    }
+    $('#id_email').focus(transmutate_focus);
+    $('#id_message').focus(transmutate_focus);
+    $('#id_email').blur(transmutate_unfocus);
+    $('#id_message').blur(transmutate_unfocus);
+    $('#id_username').mouseover(transmutate_focus);
+    $('#id_username').mouseout(transmutate_unfocus);
+</script>
+{% else %}
+<br><h2>Благодарми за представленную информацию!</h2>
+<h3>Вы сообщили нам:</h3>
+<ul>
+    <li><span>Имя:</span> {{data.username}}</li>
+    <li><span>Пол:</span> {{data.gender}}</li>
+    <li><span>Занятость:</span> {{data.bisuness}}</li>
+    <li><span>Почта:</span> {{data.email}}</li>
+    <li><span>Рассылка:</span> {{data.promotion}}</li>
+    <li><span>Полезность сайиа:</span> {{data.notice}}</li>
+    <li><span>Как мы можем улучшит сайт:</span> {{data.message}}</li>
+</ul>
+{% endif %}
+{% endblock %}
